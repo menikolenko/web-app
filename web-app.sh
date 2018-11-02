@@ -10,7 +10,7 @@ do
   [ $apicode -eq 200 ]
   then
   apiresult=$(curl http://api:7001/)
-  (echo -e "${apiresult}";) | nc -l -p 8001 -q 1
+  (echo -e "HTTP/1.1 200 OK\n\n ${apiresult}";) | nc -l -p 8001 -q 1
   else
   echo -e "HTTP/1.1 200 OK\n\n Hello" | nc -l -p 8001 -q 1
   fi
